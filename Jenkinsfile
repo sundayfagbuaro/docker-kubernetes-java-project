@@ -24,7 +24,6 @@ pipeline {
                 
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 script{
@@ -35,6 +34,15 @@ pipeline {
                     docker image ls
                     """
                 }               
+            }
+        }
+        stage ("Push Docker Image to DockerHub") {
+            steps {
+                    echo "Pushing the built image to docker hub"
+                    withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'docker_pwd', usernameVariable: 'docker_user')]) {
+                sh 'docker login -u ${docker_user} -p ${docker_pwd}' 
+                }
+                sh 'docker push sundayfagbuaro/shopfront:latest '
             }
         }
     }
