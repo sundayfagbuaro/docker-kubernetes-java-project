@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     sh """ 
-                    cd shopfront
+                    cd ${build_directory}
                     mvn clean install
                 """
                 }
@@ -38,7 +38,7 @@ pipeline {
         }
         stage ("Push Docker Image to DockerHub") {
             steps {
-                    echo "Pushing the built image to docker hub"
+                    echo "Pushing the built image for ${build_directory} to docker hub"
                     withCredentials([usernamePassword(credentialsId: 'docker-pat', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
                 sh 'docker login -u ${docker_user} -p ${docker_pass}' 
                 }
