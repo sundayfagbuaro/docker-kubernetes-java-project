@@ -24,5 +24,12 @@ pipeline {
                 
             }
         }
+
+        stage('Build Docker Image') {
+            steps {
+                echo "Building the image"
+                sh 'docker build -t sundayfagbuaro/shopfront:latest .'
+            }
+        }
     }
 }
