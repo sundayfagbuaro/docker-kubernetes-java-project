@@ -13,7 +13,7 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
+        stage('Build The Artifact') {
             steps {
                 script {
                     sh """ 
@@ -27,8 +27,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                echo "Building the image"
-                sh 'docker build -t sundayfagbuaro/shopfront:latest .'
+                script{
+                    sh """ 
+                    cd shopfront
+                    echo "Building docker image for shopfront microservice"
+                    docker build -t sundayfagbuaro/shopfront:latest .
+                    """
+                }
+                
             }
         }
     }
