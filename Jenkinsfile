@@ -32,9 +32,9 @@ pipeline {
                     cd shopfront
                     echo "Building docker image for shopfront microservice"
                     docker build -t sundayfagbuaro/shopfront:latest .
+                    docker image ls
                     """
-                }
-                
+                }               
             }
         }
     }
