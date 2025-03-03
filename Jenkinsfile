@@ -15,7 +15,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                script {
+                    sh """ 
+                    cd shopfront
+                    mvn clean install
+                """
+                }
+                
             }
         }
     }
