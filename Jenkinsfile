@@ -28,9 +28,9 @@ pipeline {
             steps {
                 script{
                     sh """ 
-                    cd shopfront
-                    echo "Building docker image for shopfront microservice"
-                    docker build -t sundayfagbuaro/shopfront:latest .
+                    cd ${build_directory}
+                    echo "Building docker image for ${build_directory} microservice"
+                    docker build -t sundayfagbuaro/${build_directory}:latest .
                     docker image ls
                     """
                 }               
@@ -42,7 +42,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'docker-pat', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
                 sh 'docker login -u ${docker_user} -p ${docker_pass}' 
                 }
-                sh 'docker push sundayfagbuaro/shopfront:latest '
+                sh 'docker push sundayfagbuaro/${build_directory}:latest '
             }
         }
     }
