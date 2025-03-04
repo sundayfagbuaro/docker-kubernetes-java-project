@@ -13,7 +13,7 @@ pipeline {
                 }
             }
         }
-        stage('Build The Artifact') {
+        stage('Build Artifact') {
             steps {
                 script {
                     sh """ 
@@ -43,6 +43,22 @@ pipeline {
                 sh 'docker login -u ${docker_user} -p ${docker_pass}' 
                 }
                 sh 'docker push sundayfagbuaro/${build_directory}:latest '
+            }
+        }
+
+        stage('Deploy container to Docker Host') {
+            steps {
+                echo "Deploying container to docker host"
+                script {
+                    sshagent(['remote-docker-host']) {
+                    sh """ ssh -tt -o StrictHostKeyChecking=no bobosunne@192.168.1.158 << EOF
+                        
+                        docker run -d -p 8010:8010 --name ${build_directory} sundayfagbuaro/${build_directory}:latest 
+                        exit
+                        EOF"""                    
+                }
+                
+                }
             }
         }
     }
