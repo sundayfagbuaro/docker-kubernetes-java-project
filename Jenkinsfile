@@ -53,7 +53,7 @@ pipeline {
                     sshagent(['remote-docker-host']) {
                     sh """ ssh -tt -o StrictHostKeyChecking=no bobosunne@192.168.1.158 << EOF
                         
-                        docker run -d -p 8010:8010 --name ${build_directory} sundayfagbuaro/${build_directory}:latest 
+                        docker run -d -p ${host_port}:${container_port} --name ${build_directory} sundayfagbuaro/${build_directory}:latest 
                         exit
                         EOF"""                    
                 }
@@ -63,3 +63,4 @@ pipeline {
         }
     }
 }
+
