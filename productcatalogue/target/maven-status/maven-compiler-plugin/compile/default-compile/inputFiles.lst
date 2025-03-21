@@ -1,0 +1,6 @@
+/Users/sundayfagbuaro/devops-classes-2025/temp_working/docker-kubernetes-java-project/productcatalogue/src/main/java/uk/co/danielbryant/djshopping/productcatalogue/ProductServiceApplication.java
+/Users/sundayfagbuaro/devops-classes-2025/temp_working/docker-kubernetes-java-project/productcatalogue/src/main/java/uk/co/danielbryant/djshopping/productcatalogue/configuration/ProductServiceConfiguration.java
+/Users/sundayfagbuaro/devops-classes-2025/temp_working/docker-kubernetes-java-project/productcatalogue/src/main/java/uk/co/danielbryant/djshopping/productcatalogue/healthchecks/BasicHealthCheck.java
+/Users/sundayfagbuaro/devops-classes-2025/temp_working/docker-kubernetes-java-project/productcatalogue/src/main/java/uk/co/danielbryant/djshopping/productcatalogue/model/Product.java
+/Users/sundayfagbuaro/devops-classes-2025/temp_working/docker-kubernetes-java-project/productcatalogue/src/main/java/uk/co/danielbryant/djshopping/productcatalogue/resources/ProductResource.java
+/Users/sundayfagbuaro/devops-classes-2025/temp_working/docker-kubernetes-java-project/productcatalogue/src/main/java/uk/co/danielbryant/djshopping/productcatalogue/services/ProductService.java
